@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Arama ve Listeleme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-left: 20px;
+            padding: 0;
+        }
+        section#arama {
+            margin-left: 0;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section id="arama">
+    <h1>Film Arama ve Listeleme</h1>
+    <form id="film-form">
+        <label for="film-arama">Film Adı:</label>
+        <input type="text" id="film-arama" name="film-arama">
+        <button type="submit">Ara/Listele</button>
+    </form>
+    </section>
+    <ul id="film-listesi"></ul>
+
+    <script>
+        document.getElementById("film-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const filmArama = document.getElementById("film-arama").value;
+            if (filmArama.trim() === "") {
+                alert("Lütfen bir film adı girin.");
+                return;
+            }
+            filmListele(filmArama);
+        });
+
+        function filmListele(filmArama) {
+            const apiUrl = `http://www.omdbapi.com/?apikey=5a5dc850&type=movie&s=${filmArama}`;
+
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.Response === "True") {
+                    const filmListesi = document.getElementById("film-listesi");
+                    filmListesi.innerHTML = ""; // Önceki listeyi temizle
+
+                    data.Search.forEach(film => {
+                        const li = document.createElement("li");
+                        li.textContent = `${film.Title} - ${film.Year}`;
+                        filmListesi.appendChild(li);
+                    });
+                } else {
+                    alert("Film bulunamadı.");
+                }
+            })
+            .catch(error => {
+                console.error("Bir hata oluştu:", error);
+                alert("Film listesi alınırken bir hata oluştu.");
+            });
+        }
+    </script>
+</body>
+</html>
