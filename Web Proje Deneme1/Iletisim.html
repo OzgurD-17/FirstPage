@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+</head>
+
+<body>
+    <form action="Iletisim.php" method="post">
+        <label for="name">Ad:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label for="surname">Soyad:</label>
+        <input type="text" name="surname" required>
+        <br>
+        <label for="phone">Telefon:</label>
+        <input type="text" name="phone" placeholder="05551112233" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <br>
+        <label for="cinsiyet">Cinsiyet:</label>
+        <input type="radio" name="cinsiyet" required>Erkek
+        <input type="radio" name="cinsiyet" required>Kadın
+        <br>
+        <label for="mesaj">Mesaj:</label>
+        <br>
+        <textarea name="mesaj" cols="30" rows="10" required></textarea>
+        <br>
+        <label for="memnuniyet">Memnuniyet (1=Hiç memnun kalmadım, 5=Çok memnun kaldım.):</label>
+
+        <select name="memnuniyet">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+
+        <br>
+        <button type="submit" name="submit">Gönder</button>
+        <button style="margin-left: 10px;" type="reset">Temizle</button>
+
+        <!-- Todo: javascript ile girilen bilgilerin kontrolü -->
+        
+    </form>
+</body>
+
+</html>
