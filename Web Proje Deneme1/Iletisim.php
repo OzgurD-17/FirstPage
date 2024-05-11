@@ -1,51 +1,38 @@
 <?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-var_dump($_POST);
-
+// Formdan gelen verileri al
 $name = $_POST['name'];
 $surname = $_POST['surname'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $cinsiyet = $_POST['cinsiyet'];
 $mesaj = $_POST['mesaj'];
+$memnuniyet = $_POST['memnuniyet'];
 
-$errors = [];
+// XSS (Cross-Site Scripting) kontrolü
+$name = htmlspecialchars($name);
+$surname = htmlspecialchars($surname);
+$phone = htmlspecialchars($phone);
+$email = htmlspecialchars($email);
+$mesaj = htmlspecialchars($mesaj);
 
-if (empty($name)) {
-    $errors[] = "Ad alanı boş bırakılamaz.";
-}
-if (empty($surname)) {
-    $errors[] = "Soyad alanı boş bırakılamaz.";
-}
-if (empty($phone)) {
-    $errors[] = "Telefon alanı boş bırakılamaz.";
-} elseif (strlen($phone) != 11) {
-    $errors[] = "Geçersiz Telefon Numarası";
-}
-if (empty($email)) {
-    $errors[] = "Email alanı boş bırakılamaz.";
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Geçersiz Email";
-}
-if (empty($cinsiyet)) {
-    $errors[] = "Cinsiyet alanı boş bırakılamaz.";
-}
-if (empty($mesaj)) {
-    $errors[] = "Mesaj alanı boş bırakılamaz.";
-}
-
-if (!empty($errors)) {
-    foreach ($errors as $error) {
-        echo $error . "<br>";
-    }
-    sleep(3);
-    header("Location: Iletisim.html");
+// Giriş doğrulama
+if (empty($name) || empty($surname) || empty($phone) || empty($email) || empty($cinsiyet) || empty($mesaj) || empty($memnuniyet)) {
+    echo "Lütfen tüm alanları doldurun.";
     exit();
 }
 
-echo "Giriş Başarılı $name $surname $phone $email";
+// Telefon numarasının doğruluğu kontrolü
+if (!preg_match("/^\d{10}$/", $phone)) {
+    echo "Lütfen telefon numaranızı doğru formatta girin (örn: 5551112233).";
+    exit();
+}
+
+// Email adresinin doğruluğu kontrolü
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Lütfen geçerli bir email adresi girin.";
+    exit();
+}
+// Başka bir sayfaya yönlendirme
+header("Location: tesekkurler.html");
+exit();
 ?>

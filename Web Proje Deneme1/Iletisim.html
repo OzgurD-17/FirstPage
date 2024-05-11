@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="Iletisim.php" method="post">
+    <form name="myForm" action="Iletisim.php" method="post" onsubmit="return formKontrol()">
         <label for="name">Ad:</label>
         <input type="text" name="name" required>
         <br>
@@ -16,7 +16,7 @@
         <input type="text" name="surname" required>
         <br>
         <label for="phone">Telefon:</label>
-        <input type="text" name="phone" placeholder="05551112233" required>
+        <input type="text" name="phone" placeholder="5551112233" required>
         <br>
         <label for="email">Email:</label>
         <input type="email" name="email" required>
@@ -31,10 +31,13 @@
         <br>
         <label for="memnuniyet">Memnuniyet (1=Hiç memnun kalmadım, 5=Çok memnun kaldım.):</label>
 
-        <select name="memnuniyet">
+        <select name="memnuniyet" required>
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
         </select>
 
 
@@ -45,6 +48,59 @@
         <!-- Todo: javascript ile girilen bilgilerin kontrolü -->
         
     </form>
+
+    <script>
+        function formKontrol() 
+        {
+            var name = document.forms["myForm"]["name"].value;
+            var surname = document.forms["myForm"]["surname"].value;
+            var phone = document.forms["myForm"]["phone"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var cinsiyet = document.querySelector('input[name="cinsiyet"]:checked');
+            var mesaj = document.forms["myForm"]["mesaj"].value;
+            var memnuniyet = document.forms["myForm"]["memnuniyet"].value;
+    
+            // Ad ve soyad kontrolü
+            if (name == "" || surname == "") {
+                alert("Lütfen adınızı ve soyadınızı girin.");
+                return false;
+            }
+    
+            // Telefon numarası kontrolü
+            var phoneRegex = /^\d{10}$/; // 10 haneli bir numara olmalı
+            if (!phone.match(phoneRegex)) {
+                alert("Lütfen telefon numaranızı doğru formatta girin (örn: 5551112233).");
+                return false;
+            }
+    
+            // Email formatı kontrolü
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                alert("Lütfen geçerli bir email adresi girin.");
+                return false;
+            }
+    
+            // Cinsiyet kontrolü
+            if (cinsiyet == null) {
+                alert("Lütfen cinsiyetinizi seçin.");
+                return false;
+            }
+    
+            // Mesaj kontrolü
+            if (mesaj == "") {
+                alert("Lütfen bir mesaj yazın.");
+                return false;
+            }
+    
+            // Memnuniyet kontrolü
+            if (memnuniyet == "0") {
+                alert("Lütfen memnuniyetinizi belirtin.");
+                return false;
+            }
+    
+            return true;
+        }
+    </script>
 </body>
 
 </html>
