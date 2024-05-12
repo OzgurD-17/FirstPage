@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form name="myForm" action="Iletisim.php" method="post" onsubmit="return formKontrol()">
+    <form name="myForm" action="Iletisim.php" method="post">
         <label for="name">Ad:</label>
         <input type="text" name="name" required>
         <br>
@@ -42,7 +42,8 @@
 
 
         <br>
-        <button type="submit" name="submit">Gönder</button>
+        <button type="submit" name="submit" onclick="formKontrol()">Gönder</button>
+        <button type="submit" name="submitWithReact">React ile Gönder</button>
         <button style="margin-left: 10px;" type="reset">Temizle</button>
 
         <!-- Todo: javascript ile girilen bilgilerin kontrolü -->
