@@ -5,6 +5,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .menu {
+            background-color: #333;
+            color: #fff;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -240px;
+            /* Menüyü ekranın dışına taşır */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            /* Menü öğelerini sola hizalar */
+            padding: 50px 20px 20px 20px;
+            /* Menü öğeleri için üst, sağ ve sol boşluk ekler */
+            transition: all 0.3s ease;
+            /* Akışkan açılıp kapanma sağlar */
+            z-index: 1;
+        }
+
+        .hamburger-menu {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 4.4rem;
+            height: 3rem;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+        }
+
+        .hamburger-menu:hover {
+            background-color: #666;
+        }
+
+        .hamburger-menu .line {
+            width: 2rem;
+            height: 0.25rem;
+            background: #d4cbcb;
+        }
+
+        .menu.open {
+            left: 0;
+            /* Menüyü ekranın içine taşır */
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px 20px;
+            width: 140px;
+            height: 21px;
+            background-color: #666;
+            border-radius: 5px;
+            /* Linklerin köşelerini yuvarlar */
+            display: inline-block;
+            /* Linklerin padding ve diğer özellikleri düzgün bir şekilde uygulanmasını sağlar */
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu a:hover {
+            background-color: #888;
+            /* Linkin üzerine gelindiğinde arka plan rengini değiştirir */
+        }
+
+        form {
+            max-width: 400px;
+            margin-bottom: 30px;
+
+            /* Sayfada ortalamak için */
+        }
+
+        label {
+            display: inline-block;
+            width: 50px;
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        label[for="memnuniyet"] {
+            display: inline-block;
+            width: 250px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: calc(100% - 130px);
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        select {
+            width: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,12 +173,42 @@
         <button style="margin-left: 10px;" type="reset">Temizle</button>
 
         <!-- Todo: javascript ile girilen bilgilerin kontrolü -->
-        
+
     </form>
 
+    <button class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </button>
+    <div class="menu">
+
+        <ul id="menuList">
+            <li><a href="Hakkında.html">Hakkımda</a></li>
+            <li><a href="Sehrim.html">Şehrim</a></li>
+            <li><a href="Interests.html">İlgi Alanlarım</a></li>
+            <li><a href="Mirasimiz.html">Mirasımız</a></li>
+            <li><a href="Ozgecmis.html">Özgeçmiş</a></li>
+            <li><a href="Login.html">Giriş Yap</a></li>
+            <li><a href="MainPage.html">Ana Sayfa</a></li>
+            <li><a href="Iletisim.html">İletişim</a></li>
+        </ul>
+    </div>
+
+
+
+
+
     <script>
-        function formKontrol() 
-        {
+        document.querySelector(".hamburger-menu").addEventListener("click", function () {
+            var menu = document.querySelector(".menu");
+            menu.classList.toggle("open");
+        });
+    </script>
+
+
+    <script>
+        function formKontrol() {
             var name = document.forms["myForm"]["name"].value;
             var surname = document.forms["myForm"]["surname"].value;
             var phone = document.forms["myForm"]["phone"].value;
@@ -60,45 +216,45 @@
             var cinsiyet = document.querySelector('input[name="cinsiyet"]:checked');
             var mesaj = document.forms["myForm"]["mesaj"].value;
             var memnuniyet = document.forms["myForm"]["memnuniyet"].value;
-    
+
             // Ad ve soyad kontrolü
             if (name == "" || surname == "") {
                 alert("Lütfen adınızı ve soyadınızı girin.");
                 return false;
             }
-    
+
             // Telefon numarası kontrolü
             var phoneRegex = /^\d{10}$/; // 10 haneli bir numara olmalı
             if (!phone.match(phoneRegex)) {
                 alert("Lütfen telefon numaranızı doğru formatta girin (örn: 5551112233).");
                 return false;
             }
-    
+
             // Email formatı kontrolü
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!email.match(emailRegex)) {
                 alert("Lütfen geçerli bir email adresi girin.");
                 return false;
             }
-    
+
             // Cinsiyet kontrolü
             if (cinsiyet == null) {
                 alert("Lütfen cinsiyetinizi seçin.");
                 return false;
             }
-    
+
             // Mesaj kontrolü
             if (mesaj == "") {
                 alert("Lütfen bir mesaj yazın.");
                 return false;
             }
-    
+
             // Memnuniyet kontrolü
             if (memnuniyet == "0") {
                 alert("Lütfen memnuniyetinizi belirtin.");
                 return false;
             }
-    
+
             return true;
         }
     </script>

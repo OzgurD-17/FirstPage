@@ -32,6 +32,14 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "Lütfen geçerli bir email adresi girin.";
     exit();
 }
+echo "Ad: $name<br>";
+echo "Soyad: $surname<br>";
+echo "Telefon: $phone<br>";
+echo "Email: $email<br>";
+echo "Cinsiyet: $cinsiyet<br>";
+echo "Mesaj: $mesaj<br>";
+echo "Memnuniyet: $memnuniyet<br>";
+sleep(5);
 // Başka bir sayfaya yönlendirme
 header("Location: tesekkurler.html");
 exit();

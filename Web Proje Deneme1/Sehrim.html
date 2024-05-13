@@ -22,7 +22,7 @@
 
         section#slider {
             text-align: center;
-            margin: 0 auto;
+            margin: 10px auto;
             /* Slider'ı sayfayı yatayda ortala */
             width: 550px;
             display: flex;
@@ -37,6 +37,14 @@
             scroll-snap-align: start;
         }
 
+        section#slider a {
+            text-align: center;
+            flex: 0 0 auto;
+            width: 100%;
+            scroll-snap-align: start;
+            display: inline-block;
+        }
+
         section#bilgiler {
             text-align: center;
             padding: 20px;
@@ -44,8 +52,87 @@
 
         footer {
             background-color: #f2f2f2;
+            
             text-align: center;
             padding: 20px;
+        }
+
+
+
+        .menu {
+            background-color: #333;
+            color: #fff;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -200px;
+            /* Menüyü ekranın dışına taşır */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: normal;
+            /* Menü öğelerini sola hizalar */
+            padding: 100px 20px 20px 20px;
+            /* Menü öğeleri için üst, sağ ve sol boşluk ekler */
+            transition: all 0.3s ease;
+            /* Akışkan açılıp kapanma sağlar */
+            z-index: 1;
+        }
+
+        .hamburger-menu {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2.7rem;
+            height: 2.1rem;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+        }
+
+        .hamburger-menu:hover {
+            background-color: #666;
+        }
+
+        .hamburger-menu .line {
+            width: 2rem;
+            height: 0.25rem;
+            background: #d4cbcb;
+            /* istediğiniz renk */
+        }
+
+        .menu.open {
+            left: 0;
+            /* Menüyü ekranın içine taşır */
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px 20px;
+            width: 140px;
+            height: 42px;
+            background-color: #666;
+            border-radius: 5px;
+            /* Linklerin köşelerini yuvarlar */
+            display: inline-block;
+            /* Linklerin padding ve diğer özellikleri düzgün bir şekilde uygulanmasını sağlar */
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu a:hover {
+            background-color: #888;
+            /* Linkin üzerine gelindiğinde arka plan rengini değiştirir */
         }
     </style>
 
@@ -65,16 +152,47 @@
     </section>
 
     <section id="slider">
-        <img src="Images/resim1.jpg" alt="Niğde Resim 1">
-        <img src="Images/resim2.jpg" alt="Niğde Resim 2">
-        <img src="Images/resim3.jpg" alt="Niğde Resim 3">
-        <img src="Images/resim4.jpg" alt="Niğde Resim 4">
-        <img src="Images/resim5.jpg" alt="Niğde Resim 5">
+        <a href="Img-nigde-belediye.html" target="_blank"><img src="Images/Nigde-Belediye.jpeg" alt="Niğde Belediyesi"></a>
+        <a href="Img-ataturk-heykeli.html" target="_blank"><img src="Images/Ataturk-Heykeli.jpg" alt="Atatürk Heykeli"></a>
+        <a href="Img-su-kemerleri.html" target="_blank"><img src="Images/Su-kemerleri.jpg" alt="Niğde Altunhisar Su Kemerleri"></a>
+        <a href="Img-gumusler-manastır.html" target="_blank"><img src="Images/Gumusler-manastir.jpg" alt="Niğde Gumusler Manastırı"></a>
+        <a href="Img-gumusler-manastır.html" target="_blank"><img src="Images/Freskler.jpg" alt="Gumusler Manastırı Fresk"></a>
     </section>
 
     <footer>
         <p>© 2024 Niğde Şehri Rehberi</p>
     </footer>
+
+    <button class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </button>
+    <div class="menu">
+
+        <ul id="menuList">
+            <li><a href="Hakkında.html">Hakkımda</a></li>
+            <li><a href="Sehrim.html">Şehrim</a></li>
+            <li><a href="Interests.html">İlgi Alanlarım</a></li>
+            <li><a href="Mirasimiz.html">Mirasımız</a></li>
+            <li><a href="Ozgecmis.html">Özgeçmiş</a></li>
+            <li><a href="Login.html">Giriş Yap</a></li>
+            <li><a href="MainPage.html">Ana Sayfa</a></li>
+            <li><a href="Iletisim.html">İletişim</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <script>
+        document.querySelector(".hamburger-menu").addEventListener("click", function () {
+            var menu = document.querySelector(".menu");
+            menu.classList.toggle("open");
+        });
+    </script>
+
 </body>
 
 </html>
