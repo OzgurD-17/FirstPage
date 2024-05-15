@@ -10,6 +10,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
             margin: 0;
             padding: 0;
         }
@@ -20,30 +22,54 @@
             padding: 20px;
         }
 
-        section#slider {
-            text-align: center;
-            margin: 10px auto;
-            /* Slider'ı sayfayı yatayda ortala */
+        #slider {
             width: 550px;
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
+            height: 400px;
+            /* İstediğiniz yüksekliği ayarlayın */
+            position: relative;
+            overflow: hidden;
+            /* Slider dışındaki içeriği gizler */
+            margin: auto;
         }
 
-        section#slider img {
-            text-align: center;
-            flex: 0 0 auto;
-            width: 100%;
-            scroll-snap-align: start;
+        .slide {
+            display: none;
         }
 
-        section#slider a {
-            text-align: center;
-            flex: 0 0 auto;
+        .slide img {
             width: 100%;
-            scroll-snap-align: start;
-            display: inline-block;
+            height: auto;
+            object-fit: cover;
+            /* Resmi, orijinal en-boy oranını koruyarak slider'a sığacak şekilde ayarlar */
         }
+
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            margin-top: 120px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 485px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
 
         section#bilgiler {
             text-align: center;
@@ -52,7 +78,7 @@
 
         footer {
             background-color: #f2f2f2;
-            
+
             text-align: center;
             padding: 20px;
         }
@@ -152,11 +178,33 @@
     </section>
 
     <section id="slider">
-        <a href="Img-nigde-belediye.html" target="_blank"><img src="Images/Nigde-Belediye.jpeg" alt="Niğde Belediyesi"></a>
-        <a href="Img-ataturk-heykeli.html" target="_blank"><img src="Images/Ataturk-Heykeli.jpg" alt="Atatürk Heykeli"></a>
-        <a href="Img-su-kemerleri.html" target="_blank"><img src="Images/Su-kemerleri.jpg" alt="Niğde Altunhisar Su Kemerleri"></a>
-        <a href="Img-gumusler-manastır.html" target="_blank"><img src="Images/Gumusler-manastir.jpg" alt="Niğde Gumusler Manastırı"></a>
-        <a href="Img-gumusler-manastır.html" target="_blank"><img src="Images/Freskler.jpg" alt="Gumusler Manastırı Fresk"></a>
+        <div class="slide">
+            <a href="Img-nigde-belediye.html" target="_blank"><img src="Images/Nigde-Belediye.jpeg"
+                    alt="Niğde Belediyesi"></a>
+        </div>
+
+        <div class="slide">
+            <a href="Img-ataturk-heykeli.html" target="_blank"><img src="Images/Ataturk-Heykeli.jpg"
+                    alt="Atatürk Heykeli"></a>
+        </div>
+
+        <div class="slide">
+            <a href="Img-su-kemerleri.html" target="_blank"><img src="Images/Su-kemerleri.jpg"
+                    alt="Niğde Altunhisar Su Kemerleri"></a>
+        </div>
+
+        <div class="slide">
+            <a href="Img-gumusler-manastır.html" target="_blank"><img src="Images/Gumusler-manastir.jpg"
+                    alt="Niğde Gumusler Manastırı"></a>
+        </div>
+
+        <div class="slide">
+            <a href="Img-gumusler-manastır.html" target="_blank"><img src="Images/Freskler.jpg"
+                    alt="Gumusler Manastırı Fresk"></a>
+        </div>
+        <a style="text-decoration: none;" href="#" class="prev" onclick="prevSlide(); return false;">&#10094;</a>
+        <a style="text-decoration: none;" href="#" class="next" onclick="nextSlide(); return false;">&#10095;</a>
+
     </section>
 
     <footer>
@@ -184,7 +232,83 @@
 
 
 
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(".slide");
+            const slideCount = slides.length;
 
+            function showSlide() {
+                slides.forEach(slide => {
+                    slide.style.display = "none";
+                });
+                slides[currentSlide].style.display = "block";
+                currentSlide = (currentSlide + 1) % slideCount;
+            }
+
+            // İlk resmin görünmesi
+            showSlide();
+
+            // Otomatik slayt geçişi
+            setInterval(showSlide, 5000);
+        });
+    </script>
+
+    <script>
+        var slides = document.querySelectorAll('#slider .slide');
+        var currentSlide = 0;
+        var slideInterval = setInterval(nextSlide, 3000); // 3 saniyede bir slide değişir
+
+        function nextSlide() {
+            slides[currentSlide].className = 'slide';
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].className = 'slide active';
+        }
+
+        function prevSlide() {
+            slides[currentSlide].className = 'slide';
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            slides[currentSlide].className = 'slide active';
+        }
+    </script> -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(".slide");
+            const slideCount = slides.length;
+
+            function showSlide() {
+                slides.forEach(slide => {
+                    slide.style.display = "none";
+                    slide.classList.remove('active');
+                });
+                slides[currentSlide].style.display = "block";
+                slides[currentSlide].classList.add('active');
+                currentSlide = (currentSlide + 1) % slideCount;
+            }
+
+            // İlk resmin görünmesi
+            showSlide();
+
+            // Otomatik slayt geçişi
+            setInterval(showSlide, 5000);
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                showSlide();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                showSlide();
+            }
+
+            document.querySelector('.next').addEventListener('click', nextSlide);
+            document.querySelector('.prev').addEventListener('click', prevSlide);
+        });
+    </script>
 
     <script>
         document.querySelector(".hamburger-menu").addEventListener("click", function () {
