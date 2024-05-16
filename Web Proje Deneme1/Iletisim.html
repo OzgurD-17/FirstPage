@@ -13,6 +13,8 @@
             margin: 20px;
             margin-top: 50px;
             padding: 20px;
+            text-align: center;
+            align-items: center;
         }
 
         .menu {
@@ -94,6 +96,7 @@
         form {
             max-width: 400px;
             margin-bottom: 30px;
+            align-items: center;
 
             /* Sayfada ortalamak için */
         }
@@ -107,7 +110,15 @@
 
         label[for="memnuniyet"] {
             display: inline-block;
-            width: 250px;
+            width: 180px;
+        }
+
+        label[for="cinsiyet"] {
+            margin-left: -110px;
+        }
+
+        label[for="mesaj"] {
+            margin-left: -225px;
         }
 
         input[type="text"],
@@ -121,6 +132,11 @@
             box-sizing: border-box;
         }
 
+        textarea {
+            margin-top: -15px;
+            margin-left: 65px;
+        }
+
         select {
             width: 100px;
         }
@@ -130,51 +146,59 @@
             margin-left: 10px;
             cursor: pointer;
         }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px);
+            /* viewport yüksekliği - formun üst marjı */
+        }
     </style>
 </head>
 
 <body>
-    <form name="myForm" action="Iletisim.php" method="post">
-        <label for="name">Ad:</label>
-        <input type="text" name="name" required>
-        <br>
-        <label for="surname">Soyad:</label>
-        <input type="text" name="surname" required>
-        <br>
-        <label for="phone">Telefon:</label>
-        <input type="text" name="phone" placeholder="5551112233" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" required>
-        <br>
-        <label for="cinsiyet">Cinsiyet:</label>
-        <input type="radio" name="cinsiyet" required>Erkek
-        <input type="radio" name="cinsiyet" required>Kadın
-        <br>
-        <label for="mesaj">Mesaj:</label>
-        <br>
-        <textarea name="mesaj" cols="30" rows="10" required></textarea>
-        <br>
-        <label for="memnuniyet">Memnuniyet (1=Hiç memnun kalmadım, 5=Çok memnun kaldım.):</label>
+    <div class="form-container">
+        <form name="myForm" action="Iletisim.php" method="post">
+            <label for="name">Ad:</label>
+            <input type="text" name="name" required>
+            <br>
+            <label for="surname">Soyad:</label>
+            <input type="text" name="surname" required>
+            <br>
+            <label for="phone">Telefon:</label>
+            <input type="text" name="phone" placeholder="5551112233" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+            <br>
+            <label for="cinsiyet">Cinsiyet:</label>
+            <input type="radio" name="cinsiyet" required>Erkek
+            <input type="radio" name="cinsiyet" required>Kadın
+            <br>
+            <br>
+            <label for="mesaj">Mesaj:</label>
+            <br>
+            <textarea name="mesaj" cols="30" rows="10" required></textarea>
+            <br>
+            <label for="memnuniyet">Memnuniyet (1=Hiç memnun kalmadım, 5=Çok memnun kaldım.):</label>
 
-        <select name="memnuniyet" required>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+            <select name="memnuniyet" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
 
-        <br>
-        <button type="submit" name="submit" onclick="formKontrol()">Gönder</button>
-        <button type="submit" name="submitWithReact">React ile Gönder</button>
-        <button style="margin-left: 10px;" type="reset">Temizle</button>
-
-        <!-- Todo: javascript ile girilen bilgilerin kontrolü -->
-
-    </form>
+            <br>
+            <button type="submit" name="submit" onclick="formKontrol()">Gönder</button>
+            <button type="submit" name="submitWithReact">React ile Gönder</button>
+            <button style="margin-left: 10px;" type="reset">Temizle</button>
+        </form>
+    </div>
 
     <button class="hamburger-menu">
         <div class="line"></div>
@@ -184,13 +208,13 @@
     <div class="menu">
 
         <ul id="menuList">
-            <li><a href="Hakkında.html">Hakkımda</a></li>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="Hakkinda.html">Hakkımda</a></li>
             <li><a href="Sehrim.html">Şehrim</a></li>
-            <li><a href="Interests.html">İlgi Alanlarım</a></li>
+            <li><a href="interests.html">İlgi Alanlarım</a></li>
             <li><a href="Mirasimiz.html">Mirasımız</a></li>
             <li><a href="Ozgecmis.html">Özgeçmiş</a></li>
             <li><a href="Login.html">Giriş Yap</a></li>
-            <li><a href="MainPage.html">Ana Sayfa</a></li>
             <li><a href="Iletisim.html">İletişim</a></li>
         </ul>
     </div>
