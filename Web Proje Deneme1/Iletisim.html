@@ -5,223 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim</title>
-
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            align-items: center;
-        }
-
-        .menu {
-            background-color: #333;
-            color: #fff;
-            width: 200px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: -240px;
-            /* Menüyü ekranın dışına taşır */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            text-align: center;
-            /* Menü öğelerini sola hizalar */
-            padding: 50px 20px 20px 20px;
-            /* Menü öğeleri için üst, sağ ve sol boşluk ekler */
-            transition: all 0.3s ease;
-            /* Akışkan açılıp kapanma sağlar */
-            z-index: 1;
-        }
-
-        .hamburger-menu {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 4.4rem;
-            height: 3rem;
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 2;
-        }
-
-        .hamburger-menu:hover {
-            background-color: #666;
-        }
-
-        .hamburger-menu .line {
-            width: 2rem;
-            height: 0.25rem;
-            background: #d4cbcb;
-        }
-
-        .menu.open {
-            left: 0;
-            /* Menüyü ekranın içine taşır */
-        }
-
-        .menu a {
-            color: #fff;
-            text-decoration: none;
-            margin: 10px 0;
-            padding: 10px 20px;
-            width: 140px;
-            height: 21px;
-            background-color: #666;
-            border-radius: 5px;
-            /* Linklerin köşelerini yuvarlar */
-            display: inline-block;
-            /* Linklerin padding ve diğer özellikleri düzgün bir şekilde uygulanmasını sağlar */
-        }
-
-        .menu ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .menu a:hover {
-            background-color: #888;
-            /* Linkin üzerine gelindiğinde arka plan rengini değiştirir */
-        }
-
-        form {
-            max-width: 400px;
-            margin-bottom: 30px;
-            align-items: center;
-
-            /* Sayfada ortalamak için */
-        }
-
-        label {
-            display: inline-block;
-            width: 50px;
-            margin-right: 10px;
-            text-align: right;
-        }
-
-        label[for="memnuniyet"] {
-            display: inline-block;
-            width: 180px;
-        }
-
-        label[for="cinsiyet"] {
-            margin-left: -110px;
-        }
-
-        label[for="mesaj"] {
-            margin-left: -225px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea,
-        select {
-            width: calc(100% - 130px);
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        textarea {
-            margin-top: -15px;
-            margin-left: 65px;
-        }
-
-        select {
-            width: 100px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 50px);
-            /* viewport yüksekliği - formun üst marjı */
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
-    <div class="form-container">
-        <form name="myForm" action="Iletisim.php" method="post">
-            <label for="name">Ad:</label>
-            <input type="text" name="name" required>
-            <br>
-            <label for="surname">Soyad:</label>
-            <input type="text" name="surname" required>
-            <br>
-            <label for="phone">Telefon:</label>
-            <input type="text" name="phone" placeholder="5551112233" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="email" name="email" required>
-            <br>
-            <label for="cinsiyet">Cinsiyet:</label>
-            <input type="radio" name="cinsiyet" required>Erkek
-            <input type="radio" name="cinsiyet" required>Kadın
-            <br>
-            <br>
-            <label for="mesaj">Mesaj:</label>
-            <br>
-            <textarea name="mesaj" cols="30" rows="10" required></textarea>
-            <br>
-            <label for="memnuniyet">Memnuniyet (1=Hiç memnun kalmadım, 5=Çok memnun kaldım.):</label>
-
-            <select name="memnuniyet" required>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-
-
-            <br>
-            <button type="submit" name="submit" onclick="formKontrol()">Gönder</button>
-            <button type="submit" name="submitWithReact">React ile Gönder</button>
-            <button style="margin-left: 10px;" type="reset">Temizle</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kişisel Sayfam</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Hakkinda.html">Hakkımda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Sehrim.html">Şehrim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="interests.html">İlgi Alanlarım</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Mirasimiz.html">Mirasımız</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ozgecmis.html">Özgeçmiş</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html">Giriş Yap</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="iletisim.html">İletişim <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <div class="container">
+        <form name="myForm" action="iletisim.php" method="post">
+            <div class="form-group">
+                <label for="name">Ad:</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Soyad:</label>
+                <input type="text" class="form-control" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefon:</label>
+                <input type="text" class="form-control" name="phone" placeholder="5551112233" required maxlength="10">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="cinsiyet">Cinsiyet:</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="cinsiyet" value="Erkek" required>
+                    <label class="form-check-label" for="Erkek">Erkek</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="cinsiyet" value="Kadın" required>
+                    <label class="form-check-label" for="Kadın">Kadın</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mesaj">Mesaj:</label>
+                <textarea class="form-control" name="mesaj" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="memnuniyet">Memnuniyet (1=Hiç memnun kalmadım, 5=Çok memnun kaldım.):</label>
+                <select class="form-control" name="memnuniyet" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" name="submit" onclick="formKontrol()">Gönder</button>
+            <button type="reset" class="btn btn-secondary" style="margin-left: 10px;">Temizle</button>
         </form>
     </div>
-
-    <button class="hamburger-menu">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </button>
-    <div class="menu">
-
-        <ul id="menuList">
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="Hakkinda.html">Hakkımda</a></li>
-            <li><a href="Sehrim.html">Şehrim</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="Mirasimiz.html">Mirasımız</a></li>
-            <li><a href="Ozgecmis.html">Özgeçmiş</a></li>
-            <li><a href="Login.html">Giriş Yap</a></li>
-            <li><a href="Iletisim.html">İletişim</a></li>
-        </ul>
-    </div>
-
-
-
-
+    <br>
 
     <script>
         document.querySelector(".hamburger-menu").addEventListener("click", function () {

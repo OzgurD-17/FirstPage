@@ -41,6 +41,6 @@ echo "Mesaj: $mesaj<br>";
 echo "Memnuniyet: $memnuniyet<br>";
 sleep(5);
 // Başka bir sayfaya yönlendirme
-header("Location: tesekkurler.html");
+header("Location: Tesekkurler.html");
 exit();
 ?>

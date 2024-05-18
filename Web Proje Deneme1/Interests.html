@@ -1,107 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film Arama ve Listeleme</title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin-left: 20px;
+            margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
 
-        section#arama {
-            margin-left: 0;
+        #arama {
+            background-color: #333;
+            color: white;
+            padding: 10px;
             text-align: center;
+        }
+
+        #film-form {
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        #film-form input {
+            width: 70%;
+            padding: 10px;
+        }
+
+        #film-form button {
+            width: 20%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+        }
+
+        #film-listesi {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             padding: 20px;
         }
 
-
-        .menu {
-            background-color: #333;
-            color: #fff;
-            width: 200px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: -200px;
-            /* Menüyü ekranın dışına taşır */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: normal;
-            /* Menü öğelerini sola hizalar */
-            padding: 100px 20px 20px 20px;
-            /* Menü öğeleri için üst, sağ ve sol boşluk ekler */
-            transition: all 0.3s ease;
-            /* Akışkan açılıp kapanma sağlar */
-            z-index: 1;
+        #film-listesi div {
+            width: 240px;
+            border: 1px solid #333;
+            margin: 10px;
+            padding: 10px;
         }
 
-        .hamburger-menu {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 2.7rem;
-            height: 2.1rem;
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 2;
+        #film-listesi div img {
+            width: 100%;
+            height: auto;
         }
 
-        .hamburger-menu:hover {
-            background-color: #666;
-        }
-
-        .hamburger-menu .line {
-            width: 2rem;
-            height: 0.25rem;
-            background: #d4cbcb;
-            /* istediğiniz renk */
-        }
-
-        .menu.open {
-            left: 0;
-            /* Menüyü ekranın içine taşır */
-        }
-
-        .menu a {
-            color: #fff;
-            text-decoration: none;
-            margin: 10px 0;
-            padding: 10px 20px;
-            width: 140px;
-            height: 42px;
-            background-color: #666;
-            border-radius: 5px;
-            /* Linklerin köşelerini yuvarlar */
-            display: inline-block;
-            /* Linklerin padding ve diğer özellikleri düzgün bir şekilde uygulanmasını sağlar */
-        }
-
-        .menu ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .menu a:hover {
-            background-color: #888;
-            /* Linkin üzerine gelindiğinde arka plan rengini değiştirir */
+        #film-listesi div .aciklama {
+            max-height: 200px;
+            /* maksimum yüksekliği sınırla */
+            overflow: auto;
+            /* aşırı metni gizleme yerine kaydırma çubuğu göster */
         }
     </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kişisel Sayfam</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Hakkinda.html">Hakkımda <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Sehrim.html">Şehrim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="interests.html">İlgi Alanlarım</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Mirasimiz.html">Mirasımız</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ozgecmis.html">Özgeçmiş</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html">Giriş Yap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="iletisim.html">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
     <section id="arama">
         <h1>Film Arama ve Listeleme</h1>
         <form id="film-form">
@@ -110,39 +116,7 @@
             <button type="submit">Ara/Listele</button>
         </form>
     </section>
-    <ul id="film-listesi"></ul>
-
-    <button class="hamburger-menu">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </button>
-    <div class="menu">
-
-        <ul id="menuList">
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="Hakkinda.html">Hakkımda</a></li>
-            <li><a href="Sehrim.html">Şehrim</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="Mirasimiz.html">Mirasımız</a></li>
-            <li><a href="Ozgecmis.html">Özgeçmiş</a></li>
-            <li><a href="Login.html">Giriş Yap</a></li>
-            <li><a href="Iletisim.html">İletişim</a></li>
-        </ul>
-    </div>
-
-
-
-
-
-    <script>
-        document.querySelector(".hamburger-menu").addEventListener("click", function () {
-            var menu = document.querySelector(".menu");
-            menu.classList.toggle("open");
-        });
-    </script>
-
-
+    <div id="film-listesi"></div>
     <script>
         document.getElementById("film-form").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -155,23 +129,21 @@
         });
 
         function filmListele(filmArama) {
-            const apiUrl = `http://www.omdbapi.com/?apikey=5a5dc850&type=movie&s=${filmArama}`;
-
+            const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=f2e26b36b7d1efa90f23ac4d1d3a28d6&query=${filmArama}`;
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.Response === "True") {
-                        const filmListesi = document.getElementById("film-listesi");
-                        filmListesi.innerHTML = ""; // Önceki listeyi temizle
-
-                        data.Search.forEach(film => {
-                            const li = document.createElement("li");
-                            li.textContent = `${film.Title} - ${film.Year}`;
-                            filmListesi.appendChild(li);
-                        });
-                    } else {
-                        alert("Film bulunamadı.");
-                    }
+                    const filmListesi = document.getElementById("film-listesi");
+                    filmListesi.innerHTML = ""; // Önceki listeyi temizle
+                    data.results.forEach(film => {
+                        const filmDiv = document.createElement("div");
+                        filmDiv.innerHTML = `
+                            <h2>${film.title} - ${film.release_date}</h2>
+                            <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="${film.title}">
+                            <p class="aciklama">${film.overview}</p>
+                        `;
+                        filmListesi.appendChild(filmDiv);
+                    });
                 })
                 .catch(error => {
                     console.error("Bir hata oluştu:", error);

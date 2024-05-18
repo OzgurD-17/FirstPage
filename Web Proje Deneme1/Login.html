@@ -1,4 +1,3 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html>
 
@@ -6,20 +5,14 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
-
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
-            /* Yatayda ortala */
             align-items: center;
-            /* Dikeyde ortala */
             height: 100vh;
-            /* Sayfa yüksekliği kadar uzansın */
-            /* margin-left: 20px; */
-            /* padding: 0; */
+            background: #f7f7f7;
         }
 
         .menu {
@@ -30,16 +23,12 @@
             position: fixed;
             top: 0;
             left: -200px;
-            /* Menüyü ekranın dışına taşır */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: normal;
-            /* Menü öğelerini sola hizalar */
             padding: 100px 20px 20px 20px;
-            /* Menü öğeleri için üst, sağ ve sol boşluk ekler */
             transition: all 0.3s ease;
-            /* Akışkan açılıp kapanma sağlar */
             z-index: 1;
         }
 
@@ -66,12 +55,10 @@
             width: 2rem;
             height: 0.25rem;
             background: #d4cbcb;
-            /* istediğiniz renk */
         }
 
         .menu.open {
             left: 0;
-            /* Menüyü ekranın içine taşır */
         }
 
         .menu a {
@@ -83,9 +70,7 @@
             height: 42px;
             background-color: #666;
             border-radius: 5px;
-            /* Linklerin köşelerini yuvarlar */
             display: inline-block;
-            /* Linklerin padding ve diğer özellikleri düzgün bir şekilde uygulanmasını sağlar */
         }
 
         .menu ul {
@@ -95,35 +80,38 @@
 
         .menu a:hover {
             background-color: #888;
-            /* Linkin üzerine gelindiğinde arka plan rengini değiştirir */
         }
 
-        form {
-            width: 300px;
-            margin: auto;
-            /* Sayfada ortalamak için */
-        }
-
-        input[type="text"],
-        input[type="password"] {
+        .login-container {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
+            max-width: 400px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 
 <body>
-    <form action="login.php" method="post">
-        <label for="username">Kullanıcı Adı:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Şifre:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <input type="submit" value="Giriş Yap">
-    </form>
+    <div class="login-container">
+        <h2 class="text-center">Giriş Yap</h2>
+        <form action="login.php" method="post">
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Kullanıcı adınızı girin" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Şifrenizi girin" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+        </form>
+    </div>
 
     <button class="hamburger-menu">
         <div class="line"></div>
@@ -131,7 +119,6 @@
         <div class="line"></div>
     </button>
     <div class="menu">
-
         <ul id="menuList">
             <li><a href="index.html">Ana Sayfa</a></li>
             <li><a href="Hakkinda.html">Hakkımda</a></li>
@@ -140,13 +127,9 @@
             <li><a href="Mirasimiz.html">Mirasımız</a></li>
             <li><a href="Ozgecmis.html">Özgeçmiş</a></li>
             <li><a href="Login.html">Giriş Yap</a></li>
-            <li><a href="Iletisim.html">İletişim</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
         </ul>
     </div>
-
-
-
-
 
     <script>
         document.querySelector(".hamburger-menu").addEventListener("click", function () {
@@ -155,6 +138,10 @@
         });
     </script>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
