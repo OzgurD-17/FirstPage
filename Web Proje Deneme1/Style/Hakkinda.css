@@ -1,0 +1,9 @@
+body {
+    padding-top: 56px;
+    /* Navbar için yer açar */
+}
+
+.image-size {
+    height: 300px;
+    object-fit: cover;
+}

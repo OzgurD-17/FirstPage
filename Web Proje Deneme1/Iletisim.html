@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -92,6 +93,8 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-primary" name="submit" onclick="formKontrol()">Gönder</button>
+            <button type="submit" class="btn btn-primary" name="submit" onclick="jQueryKontrol()">JQuery ile
+                Gönder</button>
             <button type="reset" class="btn btn-secondary" style="margin-left: 10px;">Temizle</button>
         </form>
     </div>
@@ -155,6 +158,75 @@
 
             return true;
         }
+
+
+
+
+        function jqueryKontrol() {
+            var name = $("input[name='name']").val();
+            var surname = $("input[name='surname']").val();
+            var phone = $("input[name='phone']").val();
+            var email = $("input[name='email']").val();
+            var cinsiyet = $("input[name='cinsiyet']:checked").val();
+            var mesaj = $("textarea[name='mesaj']").val();
+            var memnuniyet = $("select[name='memnuniyet']").val();
+
+            // Ad ve soyad kontrolü
+            if (name == "" || surname == "") {
+                alert("Lütfen adınızı ve soyadınızı girin.");
+                return false;
+            }
+
+            // Telefon numarası kontrolü
+            var phoneRegex = /^\d{10}$/; // 10 haneli bir numara olmalı
+            if (!phone.match(phoneRegex)) {
+                alert("Lütfen telefon numaranızı doğru formatta girin (örn: 5551112233).");
+                return false;
+            }
+
+            // Email formatı kontrolü
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailRegex)) {
+                alert("Lütfen geçerli bir email adresi girin.");
+                return false;
+            }
+
+            // Cinsiyet kontrolü
+            if (cinsiyet == null) {
+                alert("Lütfen cinsiyetinizi seçin.");
+                return false;
+            }
+
+            // Mesaj kontrolü
+            if (mesaj == "") {
+                alert("Lütfen bir mesaj yazın.");
+                return false;
+            }
+
+            // Memnuniyet kontrolü
+            if (memnuniyet == "0") {
+                alert("Lütfen memnuniyetinizi belirtin.");
+                return false;
+            }
+
+            // Tüm kontroller geçti, formu gönder
+            var formData = $("#myForm").serialize();
+
+            $.ajax({
+                url: 'iletisim.php',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    alert(response);
+                },
+                error: function () {
+                    alert("Form gönderimi sırasında bir hata oluştu.");
+                }
+            });
+
+            return false;
+        }
+
     </script>
 </body>
 

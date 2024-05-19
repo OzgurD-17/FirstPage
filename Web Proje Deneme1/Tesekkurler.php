@@ -1,3 +1,25 @@
+<?php
+session_start(); // Oturumu başlat
+
+// Verileri oturumdan al
+$name = $_SESSION['name'];
+$surname = $_SESSION['surname'];
+$phone = $_SESSION['phone'];
+$email = $_SESSION['email'];
+$cinsiyet = $_SESSION['cinsiyet'];
+$mesaj = $_SESSION['mesaj'];
+$memnuniyet = $_SESSION['memnuniyet'];
+
+// Verileri ekrana yaz
+echo "Ad: " . $name . "<br>";
+echo "Soyad: " . $surname . "<br>";
+echo "Telefon: " . $phone . "<br>";
+echo "Email: " . $email . "<br>";
+echo "Cinsiyet: " . $cinsiyet . "<br>";
+echo "Mesaj: " . $mesaj . "<br>";
+echo "Memnuniyet: " . $memnuniyet . "<br>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +32,7 @@
 </head>
 
 <body>
-    <div class="container text-center" style="margin-top: 20%;">
+    <div class="container text-center" style="margin-top: 10%;">
         <h1 class="display-4">Teşekkürler</h1>
         <h2 class="lead">Ana Menüye Yönlendiriliyorsunuz</h2>
         <h4>Lütfen Bekleyin...</h4>

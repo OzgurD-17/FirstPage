@@ -4,13 +4,13 @@ $password = $_POST['password'];
 
 if (empty($username) || empty($password)) 
 {
-    header("Location: login.html");
+    header("Location: Login.html");
     exit();
 }
 
 if (!filter_var($username, FILTER_VALIDATE_EMAIL)) 
 {
-    header("Location: login.html");
+    header("Location: Login.html");
     exit();
 }
 
@@ -19,10 +19,10 @@ $expectedPassword = 'b221210017';
 
 if ($username === $expectedUsername && $password === $expectedPassword) 
 {
-    echo "Hoşgeldiniz $username";
+    echo "<script>alert('Giriş başarılı, hoş geldiniz!');</script>";
 } 
-else
+else 
 {
-    header("Location: login.html");
+    echo "<script>alert('Kullanıcı adı veya parola yanlış. Lütfen tekrar deneyin.');</script>";
 }
 ?>

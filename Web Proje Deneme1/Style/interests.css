@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#arama {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#film-form {
+    margin: 20px auto;
+    width: 50%;
+}
+
+#film-form input {
+    width: 70%;
+    padding: 10px;
+}
+
+#film-form button {
+    width: 20%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+#film-listesi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+#film-listesi div {
+    width: 240px;
+    border: 1px solid #333;
+    margin: 10px;
+    padding: 10px;
+}
+
+#film-listesi div img {
+    width: 100%;
+    height: auto;
+}
+
+#film-listesi div .aciklama {
+    max-height: 200px;
+    /* maksimum yüksekliği sınırla */
+    overflow: auto;
+    /* aşırı metni gizleme yerine kaydırma çubuğu göster */
+}

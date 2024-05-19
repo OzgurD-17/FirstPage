@@ -1,4 +1,6 @@
 <?php
+session_start(); // Oturumu başlat
+
 // Formdan gelen verileri al
 $name = $_POST['name'];
 $surname = $_POST['surname'];
@@ -7,6 +9,15 @@ $email = $_POST['email'];
 $cinsiyet = $_POST['cinsiyet'];
 $mesaj = $_POST['mesaj'];
 $memnuniyet = $_POST['memnuniyet'];
+
+// Verileri oturumda sakla
+$_SESSION['name'] = $name;
+$_SESSION['surname'] = $surname;
+$_SESSION['phone'] = $phone;
+$_SESSION['email'] = $email;
+$_SESSION['cinsiyet'] = $cinsiyet;
+$_SESSION['mesaj'] = $mesaj;
+$_SESSION['memnuniyet'] = $memnuniyet;
 
 // XSS (Cross-Site Scripting) kontrolü
 $name = htmlspecialchars($name);
@@ -32,15 +43,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "Lütfen geçerli bir email adresi girin.";
     exit();
 }
-echo "Ad: $name<br>";
-echo "Soyad: $surname<br>";
-echo "Telefon: $phone<br>";
-echo "Email: $email<br>";
-echo "Cinsiyet: $cinsiyet<br>";
-echo "Mesaj: $mesaj<br>";
-echo "Memnuniyet: $memnuniyet<br>";
-sleep(5);
-// Başka bir sayfaya yönlendirme
-header("Location: Tesekkurler.html");
+
+header("Location: Tesekkurler.php");
 exit();
-?>
