@@ -23,11 +23,15 @@ body {
 }
 
 #film-form button {
-    width: 20%;
+    width: 15%;
     padding: 10px;
-    background-color: #333;
+    background-color: #720b0b;
     color: white;
     border: none;
+}
+
+#film-form button:hover {
+    background-color: #d21919;
 }
 
 #film-listesi {
@@ -39,7 +43,7 @@ body {
 
 #film-listesi div {
     width: 240px;
-    border: 1px solid #333;
+    border: 0.2em solid #111010;
     margin: 10px;
     padding: 10px;
 }
@@ -50,8 +54,14 @@ body {
 }
 
 #film-listesi div .aciklama {
+    font: 1em sans-serif;
     max-height: 200px;
-    /* maksimum yüksekliği sınırla */
     overflow: auto;
     /* aşırı metni gizleme yerine kaydırma çubuğu göster */
 }
+
+#film-listesi div .baslik {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+

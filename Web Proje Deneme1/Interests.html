@@ -80,7 +80,7 @@
                     data.results.forEach(film => {
                         const filmDiv = document.createElement("div");
                         filmDiv.innerHTML = `
-                            <h2>${film.title} - ${film.release_date}</h2>
+                            <h2 class="baslik">${film.title} - ${film.release_date}</h2>
                             <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="${film.title}">
                             <p class="aciklama">${film.overview}</p>
                         `;
