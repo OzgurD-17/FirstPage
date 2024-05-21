@@ -51,12 +51,12 @@ section#bilgiler {
     height: 100vh;
     position: fixed;
     top: 0;
-    left: -200px;
+    right: -200px;
     /* Menüyü ekranın dışına taşır */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: normal;
+    align-items: flex-end;
     /* Menü öğelerini sola hizalar */
     padding: 100px 20px 20px 20px;
     /* Menü öğeleri için üst, sağ ve sol boşluk ekler */
@@ -76,7 +76,7 @@ section#bilgiler {
     height: 2.1rem;
     position: fixed;
     top: 15px;
-    left: 15px;
+    right: 15px;
     z-index: 2;
 }
 
@@ -92,7 +92,7 @@ section#bilgiler {
 }
 
 .menu.open {
-    left: 0;
+    right: 0;
     /* Menüyü ekranın içine taşır */
 }
 
@@ -118,4 +118,10 @@ section#bilgiler {
 .menu a:hover {
     background-color: #888;
     /* Linkin üzerine gelindiğinde arka plan rengini değiştirir */
+}
+
+@media (max-width: 600px) {
+    section#slider {
+        width: 400px;
+    }
 }
